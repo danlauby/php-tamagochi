@@ -2,13 +2,15 @@
     class Tamagochi
     {
         private $name;
+        private $animal;
         // private $food;
         // private $play;
         // private $sleep;
 
-        function __construct($new_name)
+        function __construct($new_name, $animal)
         {
             $this->name = $new_name;
+            $this->animal = $animal;
             // $this->food = $food;
             // $this->play = $play;
             // $this->sleep = $sleep;
@@ -22,6 +24,16 @@
         function setName($newName)
         {
             $this->name = (string) $newName;
+        }
+
+        function getAnimal()
+        {
+            return $this->animal;
+        }
+
+        function setAnimal($newAnimal)
+        {
+            $this->animal = (string) $newAnimal;
         }
 
         // function getFood()

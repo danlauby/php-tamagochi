@@ -13,6 +13,15 @@
                 <label for='name'>Pick your pet name:</label>
                 <input id='name' name='name' value='Chaos' class='form-control' type='text'>
             </div>
+            <div class="form-group">
+                <select class="form-control" name="animals">
+                    <option value="hamster">Hamster</option>
+                    <option value="teletubby">Teletubby</option>
+                    <option value="duck">Duck</option>
+                    <option value="power-ranger">Power Ranger</option>
+                    <option value="owl">Owl</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-warning" id="name-submit">Submit!</button>
 
@@ -25,9 +34,14 @@
         {% if my_pets is not empty %}
             <p>Here are your pets:</p>
                 {% for thispet in my_pets %}
-                    <p>{{ thispet.getName }}</p>
+                    <p>{{ thispet.getName }} the {{ thispet.getAnimal }}</p>
                 {% endfor %}
         {% endif %}
+
+        <form action='/view-pet'>
+
+            <button type='submit' class='btn btn-info' id='play-button'>Play</button>&nbsp;&nbsp;<button type='submit' class='btn btn-success' id='food-button'>Food</button>&nbsp;&nbsp;<button type='submit' class='btn btn-danger' id='sleep-button'>Sleep</button>
+        </form>
     </div>
 </body>
 </html>

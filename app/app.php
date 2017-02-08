@@ -21,7 +21,8 @@
     });
 
     $app->post("/name", function() use ($app) {
-        $this_pet = new Tamagochi($_POST['name']);
+        $selected_animal = $_POST['animals'];
+        $this_pet = new Tamagochi($_POST['name'], $selected_animal);
         $this_pet->save();
         return $app['twig']->render('name.html.twig', array('newpet' => $this_pet));
     });
