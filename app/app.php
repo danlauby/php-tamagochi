@@ -3,31 +3,32 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Tamagochi.php";
 
+    session_start();
+
+    if (empty($_SESSION['pets'])) {
+        $_SESSION['pets'] = array();
+    }
+
     $app = new Silex\Application();
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
     ));
 
-    session_start();
-    if (empty($_SESSION['pets'])) {
-        $_SESSION['pets'] = array();
-    }
-
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('pet-name.html.twig');
+
+        return $app['twig']->render('pet-name.html.twig', array('my_pets' => Tamagochi::getAll()));
     });
 
-    $app->get("/pet-care", function() use ($app) {
-        $chaos = new Tamagochi("Chaos", 500, 800, 200);
-        $chaos->save();
-        $pets = array($chaos);
-        // return $chaos->getName();
-        return $app['twig']->render('pet-care.html.twig', array('my_pets' => Tamagochi::getAll()));
+    $app->post("/name", function() use ($app) {
+        $this_pet = new Tamagochi($_POST['name']);
+        $this_pet->save();
+        return $app['twig']->render('name.html.twig', array('newpet' => $this_pet));
     });
 
-    $app->get("/pet-view", function() use ($app) {
-        return $app['twig']->render('pet-view.html.twig');
+    $app->post("/delete_pets", function() use ($app) {
+        Tamagochi::deleteAll();
+        return $app['twig']->render('delete_pets.html.twig');
     });
 
     return $app;

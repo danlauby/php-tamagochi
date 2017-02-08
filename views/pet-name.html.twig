@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-<title>Tamagotchi</title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <title>Tamagotchi</title>
 </head>
 <body>
     <div class='container'>
         <h1>My Tamagotchi</h1>
         <p>To get started, set up your pet and start caring for it!</p>
-        <form action='/view-pet'>
+        <form action='/name' method='post'>
             <div class='form-group'>
                 <label for='name'>Pick your pet name:</label>
                 <input id='name' name='name' value='Chaos' class='form-control' type='text'>
@@ -17,6 +17,13 @@
             <button type="submit" class="btn btn-warning" id="name-submit">Submit!</button>
 
         </form>
+
+        {% if my_pets is not empty %}
+            <p>Here are your pets:</p>
+                {% for thispet in my_pets %}
+                    <p>{{ thispet.getName }}</p>
+                {% endfor %}
+        {% endif %}
     </div>
 </body>
 </html>
