@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Pet name</title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div='container'>
+        <h1>You created a pet!</h1>
+        <p>{{ newpet.getName }} the {{ newpet.getAnimal }}</p>
+
+
+        <form action='/start-game' method='post'>
+            <button type='submit' class='btn' id='start-game' name='start-game'>Start Game</button>
+        </form>
+
+        <p><a href='/'>View your list of pets.</a></p>
+    </div>
+</body>
+</html>

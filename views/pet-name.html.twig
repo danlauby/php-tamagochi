@@ -8,7 +8,7 @@
     <div class='container'>
         <h1>My Tamagotchi</h1>
         <p>To get started, set up your pet and start caring for it!</p>
-        <form action='/name' method='post'>
+        <form action='/new' method='post'>
             <div class='form-group'>
                 <label for='name'>Pick your pet name:</label>
                 <input id='name' name='name' value='Chaos' class='form-control' type='text'>
@@ -38,10 +38,6 @@
                 {% endfor %}
         {% endif %}
 
-        <form action='/view-pet'>
-
-            <button type='submit' class='btn btn-info' id='play-button'>Play</button>&nbsp;&nbsp;<button type='submit' class='btn btn-success' id='food-button'>Food</button>&nbsp;&nbsp;<button type='submit' class='btn btn-danger' id='sleep-button'>Sleep</button>
-        </form>
     </div>
 </body>
 </html>

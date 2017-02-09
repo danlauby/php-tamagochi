@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Pet name</title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div='container'>
+        <h1>Your pet:</h1>
+        <p>{{ thispetName }} the {{ thispetAnimal }}</p>
+
+
+        <form action='/food' method='post'>
+            <button type='submit' class='btn btn-info' id='food-button' name='food-button'>Food</button>
+        </form>
+        <form action='/play' method='post'>
+            <button type='button' class='btn btn-success' id='play-button' name='play-button'>Play</button>
+        </form>
+        <form action='/sleep' method='post'>
+            <button type='button' class='btn btn-danger' id='sleep-button' name='sleep-button'>Sleep</button>
+        </form>
+
+        <p>Scores:</p>
+
+        <br>
+        <p>Hunger: {{ newpet.getFood }}</p>
+        <p>Happiness: {{ newpet.getPlay }}</p>
+        <p>Sleep: {{ newpet.getSleep }}</p>
+
+        <p><a href='/'>View your list of pets.</a></p>
+    </div>
+</body>
+</html>
